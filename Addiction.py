@@ -1,14 +1,10 @@
 #!/usr/bin/env python
 # coding: utf-8
 
-# In[319]:
-
-
 import random
 import string
 from IPython.display import clear_output
 import math
-import colorama
 
 suits = ('Hearts', 'Diamonds', 'Spades', 'Clubs')
 ranks = ('Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten', 'Jack', 'Queen', 'King', 'Ace')
@@ -16,21 +12,8 @@ values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8,
             'Nine':9, 'Ten':10, 'Jack':11, 'Queen':12, 'King':13, 'Ace':1}
 values = {'Two':2, 'Three':3, 'Four':4, 'Five':5, 'Six':6, 'Seven':7, 'Eight':8, 
             'Nine':9, 'Ten':10, 'Jack':11, 'Queen':12, 'King':13, 'Ace':1}
-playing = True
-
-
-# In[ ]:
-
-
-
-
-
-# In[320]:
-
-
 class Card:
-    
-    
+        
     def __init__(self, suit, rank):
         self.suit = suit
         self.rank = rank
@@ -46,22 +29,6 @@ class Card:
         else:
             color = black
         return '{}{}{}'.format(color, drank[self.value], dsuit[self.suit], black) 
-
-
-# In[ ]:
-
-
-
-
-
-# In[321]:
-
-
-print(Card('Hearts', 'Two'))
-print(Card('Spades', 'Two'))
-
-
-# In[322]:
 
 
 class Deck:
@@ -86,16 +53,6 @@ class Deck:
         
     def deal(self):
         return self.deck.pop()
-
-
-# In[ ]:
-
-
-
-
-
-# In[291]:
-
 
 class Game:
     
@@ -148,58 +105,16 @@ class Game:
         self.shuffles -= 1
 
 
-# In[283]:
-
-
-test_game = Game()
-
-
-# In[315]:
-
-
-test_game.refill_deck()
-
-
-# In[ ]:
-
-
-
-
-
-# In[323]:
-
-
-test_game.shuffle()
-print(test_game)
-
-
-# In[317]:
-
-
-print(test_game)
-
-
-# In[213]:
-
-
 def empty_cell(game, pos):
     row, col = pos
     if (0 <= row <= 3 and 0 <= col <= 12):
         return game.board[row][col] == None
     return False
 
-
-# In[214]:
-
-
 def get_rank(val): 
     for rank, value in values.items(): 
         if val == value: 
             return rank 
-
-
-# In[196]:
-
 
 def ask_for_suit(game):    
     while True:
@@ -207,11 +122,6 @@ def ask_for_suit(game):
         if suit in suits:
             return suit
             
-
-
-# In[197]:
-
-
 def erase_old_card(game, card):
     
     for i in range(len(game.board)):
@@ -220,16 +130,6 @@ def erase_old_card(game, card):
                 game.board[i][j] = None
                 return game
     return game
-
-
-# In[ ]:
-
-
-
-
-
-# In[198]:
-
 
 def pick_spot(game):
 
@@ -263,22 +163,6 @@ def pick_spot(game):
                 clear_output()
                 return game
 
-
-# In[199]:
-
-
-# pick_spot(test_game)
-
-
-# In[200]:
-
-
-print(test_game)
-
-
-# In[201]:
-
-
 def moves_available(game):
     spots = 0
     for i in range(len(game.board)):
@@ -295,10 +179,6 @@ def moves_available(game):
                 return False
     return False
 
-
-# In[325]:
-
-
 def won(game):
     for row in game.board:
         if row[0] == None or row[0].value != 2:
@@ -308,24 +188,6 @@ def won(game):
             if card == None or card.suit != suit or card.value != val:
                 return False
     return True
-
-
-# In[203]:
-
-
-print(test_game)
-won(test_game)
-
-
-# In[205]:
-
-
-print(test_game)
-test_game = test_game.refill_deck()
-print(test_game)
-
-
-# In[120]:
 
 
 def end_game(outcome):
@@ -340,9 +202,6 @@ def end_game(outcome):
         elif playing == 'N':
             return False
     return False
-
-
-# In[ ]:
 
 
 def play_game():
@@ -369,21 +228,5 @@ def play_game():
                     print('Shuffling...no moves left')
                     game.shuffle()
 
-
-# In[ ]:
-
-
 play_game()
-
-
-# In[ ]:
-
-
-
-
-
-# In[ ]:
-
-
-
 
